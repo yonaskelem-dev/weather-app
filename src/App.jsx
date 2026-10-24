@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 
+const WEATHER_API_URL = import.meta.env.VITE_WEATHER_API_URL;
+const GEOCODING_API_URL = import.meta.env.VITE_GEOCODING_API_URL;
+
 const CURRENT_FIELDS =
   "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m";
 
@@ -19,16 +22,13 @@ const App = () => {
   useEffect(() => {
     async function fetchInitialWeather() {
       try {
-        const response = await axios.get(
-          "https://api.open-meteo.com/v1/forecast",
-          {
-            params: {
-              latitude: 9.03,
-              longitude: 38.74,
-              current: CURRENT_FIELDS,
-            },
+        const response = await axios.get(WEATHER_API_URL, {
+          params: {
+            latitude: 9.03,
+            longitude: 38.74,
+            current: CURRENT_FIELDS,
           },
-        );
+        });
 
         setWeather(response.data.current);
       } catch {
@@ -46,15 +46,12 @@ const App = () => {
     setError("");
 
     try {
-      const locationResponse = await axios.get(
-        "https://geocoding-api.open-meteo.com/v1/search",
-        {
-          params: {
-            name: searchName,
-            count: 1,
-          },
+      const locationResponse = await axios.get(GEOCODING_API_URL, {
+        params: {
+          name: searchName,
+          count: 1,
         },
-      );
+      });
 
       const result = locationResponse.data.results?.[0];
 
@@ -64,16 +61,13 @@ const App = () => {
         return;
       }
 
-      const weatherResponse = await axios.get(
-        "https://api.open-meteo.com/v1/forecast",
-        {
-          params: {
-            latitude: result.latitude,
-            longitude: result.longitude,
-            current: CURRENT_FIELDS,
-          },
+      const weatherResponse = await axios.get(WEATHER_API_URL, {
+        params: {
+          latitude: result.latitude,
+          longitude: result.longitude,
+          current: CURRENT_FIELDS,
         },
-      );
+      });
 
       setCity({
         name: result.name,
