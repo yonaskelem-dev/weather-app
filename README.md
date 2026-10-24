@@ -35,3 +35,7 @@ A simple weather application built with React that allows users to search for ci
 ## API
 
 Weather data and location search are provided by [Open-Meteo](https://open-meteo.com/).
+
+## Live Demo
+
+[View Weather App](https://weather-app-ashen-tau-94.vercel.app/)
