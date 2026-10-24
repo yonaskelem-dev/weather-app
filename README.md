@@ -1,16 +1,59 @@
-# React + Vite
+# Weather App 🌤️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple weather application built with React and Vite. It allows users to search for a city and view its current weather.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search weather by city name
+- Display temperature and weather conditions
+- Show humidity, wind speed, and other weather details
+- Load default weather for Addis Ababa
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- Axios
+- CSS
+- Open-Meteo API
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository:
+
+   ```bash
+   git clone YOUR-REPOSITORY-URL
+   ```
+
+2. Open the project folder:
+
+   ```bash
+   cd weather-application
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file in the project root and add:
+
+   ```env
+   VITE_WEATHER_API_URL=https://api.open-meteo.com/v1/forecast
+   VITE_GEOCODING_API_URL=https://geocoding-api.open-meteo.com/v1/search
+   ```
+
+5. Start the application:
+
+   ```bash
+   npm run dev
+   ```
+
+## API
+
+This project uses the free [Open-Meteo API](https://open-meteo.com/) for weather forecasts and city search.
+
+## License
+
+This project is open source and available for learning purposes.
